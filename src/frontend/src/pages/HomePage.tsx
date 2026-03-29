@@ -41,14 +41,14 @@ export default function HomePage({ userProfile }: HomePageProps) {
         latitude: pos.coords.latitude,
         longitude: pos.coords.longitude,
       });
-      toast.success("🚨 SOS Alert Sent! Your contacts have been notified.", {
+      toast.success("SOS Alert Sent! Your contacts have been notified.", {
         duration: 6000,
       });
     } catch (err: any) {
       if (err?.code === 1) {
         try {
           await sendSOS.mutateAsync({ latitude: 0, longitude: 0 });
-          toast.success("🚨 SOS Alert Sent! (location unavailable)", {
+          toast.success("SOS Alert Sent! (location unavailable)", {
             duration: 6000,
           });
         } catch {
@@ -88,7 +88,7 @@ export default function HomePage({ userProfile }: HomePageProps) {
     <div className="min-h-[calc(100vh-4rem)] bg-primary flex flex-col items-center justify-center px-4 py-12">
       <div className="text-center mb-10">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-3">
-          {userProfile ? `Stay Safe, ${userProfile.name}` : "She Safe"}
+          {userProfile ? `Stay Safe, ${userProfile.name}` : "Guardian"}
         </h1>
         <p className="text-primary-foreground/70 text-lg max-w-sm">
           Press and hold the SOS button for 3 seconds to send an emergency
