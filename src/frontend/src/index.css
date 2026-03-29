@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 1rem;
+
+    /* Pink palette - OKLCH L C H */
+    --background: 0.97 0.008 0;
+    --foreground: 0.22 0.04 0;
+    --card: 0.99 0.004 0;
+    --card-foreground: 0.22 0.04 0;
+    --popover: 0.99 0.004 0;
+    --popover-foreground: 0.22 0.04 0;
+    --primary: 0.38 0.165 0;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.93 0.03 0;
+    --secondary-foreground: 0.38 0.165 0;
+    --muted: 0.95 0.015 0;
+    --muted-foreground: 0.52 0.06 0;
+    --accent: 0.55 0.22 330;
+    --accent-foreground: 0.98 0 0;
+    --destructive: 0.63 0.24 15;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.88 0.04 0;
+    --input: 0.88 0.04 0;
+    --ring: 0.55 0.22 330;
+    --chart-1: 0.55 0.22 330;
+    --chart-2: 0.48 0.18 0;
+    --chart-3: 0.63 0.24 15;
+    --chart-4: 0.38 0.165 0;
+    --chart-5: 0.93 0.03 0;
+    --sidebar: 0.38 0.165 0;
+    --sidebar-foreground: 0.98 0 0;
+    --sidebar-primary: 0.63 0.24 15;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.48 0.18 0;
+    --sidebar-accent-foreground: 0.98 0 0;
+    --sidebar-border: 0.48 0.18 0;
+    --sidebar-ring: 0.63 0.24 15;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+}
+
+/* SOS Button pulse animation */
+@keyframes sos-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.63 0.24 15 / 0.7), 0 0 0 0
+      oklch(0.63 0.24 15 / 0.4), 0 0 60px oklch(0.63 0.24 15 / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 24px oklch(0.63 0.24 15 / 0), 0 0 0 48px
+      oklch(0.63 0.24 15 / 0), 0 0 80px oklch(0.63 0.24 15 / 0.5);
+  }
+}
+
+@keyframes sos-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.sos-btn-pulse {
+  animation: sos-pulse 2s ease-in-out infinite;
+}
+
+.sos-ring {
+  animation: sos-ring 1.5s ease-out infinite;
+}
+
+.sos-ring-2 {
+  animation: sos-ring 1.5s ease-out infinite 0.5s;
+}
+
+/* SOS hold progress */
+@keyframes fill-progress {
+  from {
+    stroke-dashoffset: 282.74;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.sos-progress-ring {
+  stroke-dasharray: 282.74;
+  stroke-dashoffset: 282.74;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.05s linear;
+}
